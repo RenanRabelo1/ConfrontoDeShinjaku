@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dls77n4oo0t5r"
+path="res://.godot/imported/JUDAS x GOJO vs SUKUNA ｜ EPIC BATTLE + ANIME VOICES [Jujutsu Kaisen MMV].mp3-5930da8a02b75a2ec96805ed4723de89.mp3str"
+
+[deps]
+
+source_file="res://JUDAS x GOJO vs SUKUNA ｜ EPIC BATTLE + ANIME VOICES [Jujutsu Kaisen MMV].mp3"
+dest_files=["res://.godot/imported/JUDAS x GOJO vs SUKUNA ｜ EPIC BATTLE + ANIME VOICES [Jujutsu Kaisen MMV].mp3-5930da8a02b75a2ec96805ed4723de89.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

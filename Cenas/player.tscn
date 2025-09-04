@@ -1,0 +1,148 @@
+[gd_scene load_steps=22 format=3 uid="uid://7jh5s0mw31cg"]
+
+[ext_resource type="Script" uid="uid://gr4nti5qdyks" path="res://Cenas/player.gd" id="1_pmvhq"]
+[ext_resource type="Texture2D" uid="uid://camreh7vxwoxk" path="res://Aseprite/Gojo Satoru Sprite sheet/Sprite Sheet Gojo tirando roupa.png" id="2_iersn"]
+[ext_resource type="Texture2D" uid="uid://33cxh4k446nh" path="res://Aseprite/Gojo Satoru Sprite sheet/Gojo Walking.png" id="3_iersn"]
+[ext_resource type="Texture2D" uid="uid://mvkecvwm65ux" path="res://Aseprite/Gojo Satoru Sprite sheet/Gojo WalkingInverted.png" id="4_5p0qj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuqgu"]
+atlas = ExtResource("2_iersn")
+region = Rect2(441, 0, 63, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx05c"]
+atlas = ExtResource("2_iersn")
+region = Rect2(504, 0, 63, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vhvd"]
+atlas = ExtResource("2_iersn")
+region = Rect2(567, 0, 63, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p0qj"]
+atlas = ExtResource("3_iersn")
+region = Rect2(0, 0, 45, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk6xx"]
+atlas = ExtResource("3_iersn")
+region = Rect2(180, 0, 45, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb2x8"]
+atlas = ExtResource("3_iersn")
+region = Rect2(225, 0, 45, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60xba"]
+atlas = ExtResource("3_iersn")
+region = Rect2(270, 0, 45, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_had87"]
+atlas = ExtResource("3_iersn")
+region = Rect2(315, 0, 45, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2nbm"]
+atlas = ExtResource("4_5p0qj")
+region = Rect2(0, 0, 47, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybr15"]
+atlas = ExtResource("4_5p0qj")
+region = Rect2(47, 0, 47, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q8k4"]
+atlas = ExtResource("4_5p0qj")
+region = Rect2(94, 0, 47, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2enhl"]
+atlas = ExtResource("4_5p0qj")
+region = Rect2(141, 0, 47, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruciq"]
+atlas = ExtResource("4_5p0qj")
+region = Rect2(188, 0, 47, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c22q"]
+atlas = ExtResource("4_5p0qj")
+region = Rect2(235, 0, 47, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlk8b"]
+atlas = ExtResource("4_5p0qj")
+region = Rect2(282, 0, 47, 93)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e2nbm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuqgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx05c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vhvd")
+}],
+"loop": true,
+"name": &"battle_preparation_gojo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p0qj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk6xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bb2x8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60xba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_had87")
+}],
+"loop": true,
+"name": &"walk_gojo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2nbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybr15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q8k4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2enhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruciq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c22q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlk8b")
+}],
+"loop": true,
+"name": &"walk_gojo_inverted",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybr15"]
+radius = 8.0
+height = 38.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_pmvhq")
+
+[node name="Animacao_Gojo" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, -2)
+scale = Vector2(0.611111, 0.489011)
+sprite_frames = SubResource("SpriteFrames_e2nbm")
+animation = &"walk_gojo"
+frame_progress = 0.323255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -2)
+shape = SubResource("CapsuleShape2D_ybr15")
