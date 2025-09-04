@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://tw6yvruiuufb"]
+
+[ext_resource type="VideoStream" uid="uid://drqwdj4dwox5y" path="res://Assets Jujutsu Kaisen/Isgojogointosusewithoutaudio.ogv" id="1_2msrm"]
+
+[node name="Video1" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.3, 0.3)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = -1931.0
+offset_top = -1085.0
+offset_right = 1909.0
+offset_bottom = 1075.0
+stream = ExtResource("1_2msrm")
+autoplay = true

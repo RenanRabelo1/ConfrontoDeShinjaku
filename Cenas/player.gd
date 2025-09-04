@@ -34,3 +34,6 @@ func _physics_process(delta: float) -> void:
 		$Animacao_Gojo.play("walk_gojo_inverted")
 	else:
 		$Animacao_Gojo.stop()
+		
+	if Input.is_action_just_pressed("Lapse_Vermelho"):
+		$Animacao_Gojo.play("Lapse_Vermelho")
