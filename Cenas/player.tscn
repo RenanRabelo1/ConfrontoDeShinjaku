@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://gr4nti5qdyks" path="res://Cenas/player.gd" id="1_pmvhq"]
 [ext_resource type="Texture2D" uid="uid://camreh7vxwoxk" path="res://Aseprite/Gojo Satoru Sprite sheet/Sprite Sheet Gojo tirando roupa.png" id="2_iersn"]
-[ext_resource type="Texture2D" uid="uid://bo0lecgggkxw3" path="res://Assets Jujutsu Kaisen/Lapse Red.png" id="2_jx05c"]
-[ext_resource type="Texture2D" uid="uid://cncbyqrg7l237" path="res://Assets Jujutsu Kaisen/Lapse Vermelho Sukuna.png" id="3_8vhvd"]
+[ext_resource type="Texture2D" uid="uid://cvfemqkj8cos7" path="res://Assets Jujutsu Kaisen/Lapse Red.png" id="2_jx05c"]
+[ext_resource type="Texture2D" uid="uid://bn1dwnthfkaxo" path="res://Assets Jujutsu Kaisen/Lapse Vermelho Sukuna.png" id="3_8vhvd"]
 [ext_resource type="Texture2D" uid="uid://33cxh4k446nh" path="res://Aseprite/Gojo Satoru Sprite sheet/Gojo Walking.png" id="3_iersn"]
 [ext_resource type="Texture2D" uid="uid://mvkecvwm65ux" path="res://Aseprite/Gojo Satoru Sprite sheet/Gojo WalkingInverted.png" id="4_5p0qj"]
 
@@ -90,22 +90,22 @@ region = Rect2(282, 0, 47, 93)
 [sub_resource type="SpriteFrames" id="SpriteFrames_e2nbm"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_axwfv")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_8tubf")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_a4yfx")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_alogn")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_4j5ex")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("3_8vhvd")
 }],
 "loop": true,
@@ -182,11 +182,12 @@ collision_mask = 6
 script = ExtResource("1_pmvhq")
 
 [node name="Animacao_Gojo" type="AnimatedSprite2D" parent="."]
-position = Vector2(127, 38)
+position = Vector2(1, -3)
 scale = Vector2(0.611111, 0.489011)
 sprite_frames = SubResource("SpriteFrames_e2nbm")
 animation = &"Lapse_Vermelho"
-frame_progress = 0.299622
+frame = 5
+frame_progress = 0.0428554
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -2)

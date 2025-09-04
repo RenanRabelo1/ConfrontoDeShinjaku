@@ -1,18 +1,27 @@
 extends Node
 
-var time = Timer
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AudioStreamPlayer2D.play()
-	time = $Timer
-	
-	time.start()
+	$Button.hide()
+
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
 
+func _on_button_pressed() -> void: 
+	$VideoStreamPlayer2.play()# Replace with function body.
+	$TimerAcabarvideo1.start()
+	$Button.visible = false
+	$Button.disabled = true
 
 func _on_timer_timeout() -> void:
-	pass # Replace with function body.
+	$VideoStreamPlayer2.stop()
+
+func _on_timer_inicial_button_timeout() -> void:
+	$Button.show()
