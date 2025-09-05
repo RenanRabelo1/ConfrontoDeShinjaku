@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://dnyp5w617emyh"]
+
+[ext_resource type="Texture2D" uid="uid://ct5u4hv3dsbuq" path="res://Assets Jujutsu Kaisen/Purple Animation.png" id="1_an08o"]
+[ext_resource type="Script" uid="uid://brmnacl1kow1b" path="res://Cenas/bullet.gd" id="1_e5xkf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5xkf"]
+atlas = ExtResource("1_an08o")
+region = Rect2(0, 0, 112, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exnds"]
+atlas = ExtResource("1_an08o")
+region = Rect2(112, 0, 112, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snmhv"]
+atlas = ExtResource("1_an08o")
+region = Rect2(224, 0, 112, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc3ey"]
+atlas = ExtResource("1_an08o")
+region = Rect2(336, 0, 112, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkq61"]
+atlas = ExtResource("1_an08o")
+region = Rect2(448, 0, 112, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqb4n"]
+atlas = ExtResource("1_an08o")
+region = Rect2(555, 0, 111, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tplns"]
+atlas = ExtResource("1_an08o")
+region = Rect2(652, 0, 163, 166)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ewwy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5xkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exnds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snmhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc3ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkq61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqb4n")
+}, {
+"duration": 100.0,
+"texture": SubResource("AtlasTexture_tplns")
+}],
+"loop": true,
+"name": &"Purple_animation",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_exnds"]
+radius = 27.0
+
+[node name="bullet" type="Area2D" groups=["bullets"]]
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("1_e5xkf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.512048)
+sprite_frames = SubResource("SpriteFrames_2ewwy")
+animation = &"Purple_animation"
+frame = 6
+frame_progress = 0.351805
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_exnds")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-1, -4)
+scale = Vector2(2.45, 2.65)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

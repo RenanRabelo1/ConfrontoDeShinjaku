@@ -16,12 +16,14 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void: 
 	$VideoStreamPlayer2.play()# Replace with function body.
-	$TimerAcabarvideo1.start()
 	$Button.visible = false
 	$Button.disabled = true
 
-func _on_timer_timeout() -> void:
-	$VideoStreamPlayer2.stop()
+
 
 func _on_timer_inicial_button_timeout() -> void:
 	$Button.show()
+
+
+func _on_video_stream_player_2_finished() -> void:
+	$VideoStreamPlayer2.stop() # Replace with function body.

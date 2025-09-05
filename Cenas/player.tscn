@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://7jh5s0mw31cg"]
+[gd_scene load_steps=35 format=3 uid="uid://7jh5s0mw31cg"]
 
 [ext_resource type="Script" uid="uid://gr4nti5qdyks" path="res://Cenas/player.gd" id="1_pmvhq"]
 [ext_resource type="Texture2D" uid="uid://camreh7vxwoxk" path="res://Aseprite/Gojo Satoru Sprite sheet/Sprite Sheet Gojo tirando roupa.png" id="2_iersn"]
 [ext_resource type="Texture2D" uid="uid://dqflmxgyc65yg" path="res://Assets Jujutsu Kaisen/Lapse Red.png" id="2_jx05c"]
 [ext_resource type="Texture2D" uid="uid://33cxh4k446nh" path="res://Aseprite/Gojo Satoru Sprite sheet/Gojo Walking.png" id="3_iersn"]
+[ext_resource type="Texture2D" uid="uid://dpax74qdpkmt0" path="res://Assets Jujutsu Kaisen/Purple Gojo.png" id="3_jx05c"]
 [ext_resource type="Texture2D" uid="uid://mvkecvwm65ux" path="res://Aseprite/Gojo Satoru Sprite sheet/Gojo WalkingInverted.png" id="4_5p0qj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_axwfv"]
@@ -25,6 +26,30 @@ region = Rect2(380, 0, 95, 101)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4j5ex"]
 atlas = ExtResource("2_jx05c")
 region = Rect2(488, 0, 61, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj8y3"]
+atlas = ExtResource("3_jx05c")
+region = Rect2(0, 0, 71, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh05g"]
+atlas = ExtResource("3_jx05c")
+region = Rect2(74, 0, 74, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v2xp"]
+atlas = ExtResource("3_jx05c")
+region = Rect2(148, 0, 74, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7cd8"]
+atlas = ExtResource("3_jx05c")
+region = Rect2(296, 0, 74, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjhg2"]
+atlas = ExtResource("3_jx05c")
+region = Rect2(222, 0, 74, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnm6q"]
+atlas = ExtResource("3_jx05c")
+region = Rect2(369, 0, 123, 102)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yuqgu"]
 atlas = ExtResource("2_iersn")
@@ -110,6 +135,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_dj8y3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh05g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v2xp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7cd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjhg2")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_jnm6q")
+}],
+"loop": true,
+"name": &"Vazio_Roxo",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_yuqgu")
 }, {
 "duration": 1.0,
@@ -181,9 +229,16 @@ script = ExtResource("1_pmvhq")
 position = Vector2(1, -3)
 scale = Vector2(0.611111, 0.489011)
 sprite_frames = SubResource("SpriteFrames_e2nbm")
-animation = &"Lapse_Vermelho"
-frame_progress = 0.501974
+animation = &"Vazio_Roxo"
+frame_progress = 0.0156482
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -2)
+position = Vector2(-2, 6)
 shape = SubResource("CapsuleShape2D_ybr15")
+
+[node name="bullet_position" type="Marker2D" parent="."]
+position = Vector2(32, -4)
+
+[node name="shoot_cooldown" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

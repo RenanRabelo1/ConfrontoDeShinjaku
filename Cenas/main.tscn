@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://n22ewn1a7j7m"]
+[gd_scene load_steps=18 format=4 uid="uid://n22ewn1a7j7m"]
 
 [ext_resource type="Texture2D" uid="uid://dtkrgfs1x5qrr" path="res://Assets Super Mario Bros/Sprites/UndergroundBrick.png" id="1_lb8y5"]
 [ext_resource type="Script" uid="uid://djpf1x4he8oqa" path="res://Cenas/main.gd" id="1_qns0q"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bbm0m6v5wxmv7" path="res://Assets Jujutsu Kaisen/GojoBakaga20sec.MP3" id="8_btbr3"]
 [ext_resource type="VideoStream" uid="uid://dw3rq0bcq1qhp" path="res://Assets Jujutsu Kaisen/Gojoisgontingtoloseperfect.ogv" id="9_7yi6i"]
 [ext_resource type="FontFile" uid="uid://dm3ch1vmt4ixr" path="res://Assets Super Mario Bros/Fonts/font.ttf" id="9_jjrtw"]
+[ext_resource type="PackedScene" uid="uid://bo1a6isilwsgf" path="res://Cenas/Sukuna.tscn" id="11_7yi6i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x6di6"]
 texture = ExtResource("1_lb8y5")
@@ -64,9 +65,6 @@ wait_time = 4.0
 one_shot = true
 autostart = true
 
-[node name="TimerAcabarvideo1" type="Timer" parent="."]
-wait_time = 5.2
-
 [node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="."]
 offset_left = -578.0
 offset_top = -322.0
@@ -83,6 +81,8 @@ theme_override_fonts/font = ExtResource("9_jjrtw")
 text = "Lapse Red
 "
 
+[node name="CharacterBody2D" parent="." instance=ExtResource("11_7yi6i")]
+
 [connection signal="timeout" from="TimerInicialButton" to="." method="_on_timer_inicial_button_timeout"]
-[connection signal="timeout" from="TimerAcabarvideo1" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="VideoStreamPlayer2" to="." method="_on_video_stream_player_2_finished"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

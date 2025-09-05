@@ -1,4 +1,4 @@
-extends Node
+extends Area2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,5 +11,8 @@ func _process(delta: float) -> void:
 	pass
 
 
-
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("bullets"):
+		area.queue_free()
+		owner.queue_free()
 	
