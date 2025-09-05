@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bh2i2pbd72n30" path="res://Assets Super Mario Bros/Sprites/GroundBlock.png" id="3_qns0q"]
 [ext_resource type="Texture2D" uid="uid://8as4lix1a8pr" path="res://Assets Super Mario Bros/Sprites/HardBlock.png" id="4_n00j1"]
 [ext_resource type="PackedScene" uid="uid://7jh5s0mw31cg" path="res://Cenas/player.tscn" id="5_ja1os"]
-[ext_resource type="Texture2D" uid="uid://djxs42pngsa1k" path="res://Assets Jujutsu Kaisen/GroundBlockjujutsu.png" id="6_x6di6"]
-[ext_resource type="AudioStream" uid="uid://b6lnfu4dirshs" path="res://Assets Jujutsu Kaisen/GojoBakaga20sec.MP3" id="8_btbr3"]
+[ext_resource type="Texture2D" uid="uid://62yaa8tsoa7i" path="res://Assets Jujutsu Kaisen/GroundBlockjujutsu.png" id="6_x6di6"]
+[ext_resource type="AudioStream" uid="uid://bbm0m6v5wxmv7" path="res://Assets Jujutsu Kaisen/GojoBakaga20sec.MP3" id="8_btbr3"]
 [ext_resource type="VideoStream" uid="uid://dw3rq0bcq1qhp" path="res://Assets Jujutsu Kaisen/Gojoisgontingtoloseperfect.ogv" id="9_7yi6i"]
 [ext_resource type="FontFile" uid="uid://dm3ch1vmt4ixr" path="res://Assets Super Mario Bros/Fonts/font.ttf" id="9_jjrtw"]
 
