@@ -1,0 +1,123 @@
+[gd_scene load_steps=17 format=3 uid="uid://djhwdaalo4c6k"]
+
+[ext_resource type="Texture2D" uid="uid://cgpw5kdb5dt4b" path="res://Assets Jujutsu Kaisen/Mahoraga Jumping.png" id="1_udc4a"]
+[ext_resource type="Texture2D" uid="uid://c8rujvdw5ss2m" path="res://Assets Jujutsu Kaisen/Mahoraga Melee.png" id="2_0eowr"]
+[ext_resource type="Texture2D" uid="uid://bukef5jd1hklh" path="res://Assets Jujutsu Kaisen/Mahoraga Running.png" id="3_7d3va"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyb05"]
+atlas = ExtResource("2_0eowr")
+region = Rect2(0, 0, 100, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dc83"]
+atlas = ExtResource("2_0eowr")
+region = Rect2(93, 0, 93, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trpq6"]
+atlas = ExtResource("2_0eowr")
+region = Rect2(279, 0, 93, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdehm"]
+atlas = ExtResource("2_0eowr")
+region = Rect2(186, 0, 93, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4y3ya"]
+atlas = ExtResource("2_0eowr")
+region = Rect2(500, 0, 100, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l23ee"]
+atlas = ExtResource("2_0eowr")
+region = Rect2(600, 0, 100, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qixee"]
+atlas = ExtResource("2_0eowr")
+region = Rect2(700, 0, 100, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk1kv"]
+atlas = ExtResource("2_0eowr")
+region = Rect2(800, 0, 100, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2avrw"]
+atlas = ExtResource("3_7d3va")
+region = Rect2(0, 0, 85, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vmrk"]
+atlas = ExtResource("3_7d3va")
+region = Rect2(170, 0, 85, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkphs"]
+atlas = ExtResource("3_7d3va")
+region = Rect2(255, 0, 85, 104)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jq7gc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_udc4a")
+}],
+"loop": true,
+"name": &"Mahoraga_Jumping",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyb05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dc83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trpq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdehm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4y3ya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l23ee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qixee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qk1kv")
+}],
+"loop": true,
+"name": &"Mahoraga_Melee",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2avrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vmrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkphs")
+}],
+"loop": true,
+"name": &"Mahoraga_Running",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rom7q"]
+size = Vector2(50, 65.5)
+
+[node name="Mahoraga" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -1)
+scale = Vector2(0.905882, 0.940874)
+sprite_frames = SubResource("SpriteFrames_jq7gc")
+animation = &"Mahoraga_Running"
+autoplay = "Mahoraga_Running"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-12, 0.25)
+shape = SubResource("RectangleShape2D_rom7q")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

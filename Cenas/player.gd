@@ -16,11 +16,12 @@ var is_shooting := false
 
 @onready var bullet_position: Marker2D = $bullet_position
 @onready var shoot_cooldown: Timer = $shoot_cooldown
+@onready var raycast = $RayCast2D
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	
+		
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 		
@@ -40,25 +41,19 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed * delta)
 	
 	move_and_slide()
+	
 	if velocity.x > 0:
 		$Animacao_Gojo.play("walk_gojo")
 	elif velocity.x < 0:
 		$Animacao_Gojo.play("walk_gojo_inverted")
-	
-	elif Input.is_action_pressed("Lapse_Vermelho"):
-		$Animacao_Gojo.play("Lapse_Vermelho")
 	elif Input.is_action_pressed("Vazio_Roxo"):
 		is_shooting = true
 		$Animacao_Gojo.play("Vazio_Roxo")
 		if shoot_cooldown.is_stopped():
 			shoot_bullet()
-		
-		
-	
 	else:
 		$Animacao_Gojo.stop()
 		is_shooting = false
-	
 func shoot_bullet():
 	var bullet_instance = BULLET_SCENE.instantiate()
 	if sign(bullet_position.position.x) == 1:

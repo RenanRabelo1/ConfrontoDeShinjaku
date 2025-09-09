@@ -55,8 +55,9 @@ Vazio_Roxo={
 2d_physics/layer_3="enemies"
 2d_physics/layer_4="bullets"
 2d_physics/layer_5="hitbox"
+2d_physics/layer_6="Stomped"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(1, 1, 1, 1)
+environment/defaults/default_clear_color=Color(0.0909186, 0.0410684, 0.288133, 1)

@@ -57,7 +57,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Purple_animation",
-"speed": 10.0
+"speed": 8.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_exnds"]
@@ -72,8 +72,7 @@ script = ExtResource("1_e5xkf")
 scale = Vector2(0.5, 0.512048)
 sprite_frames = SubResource("SpriteFrames_2ewwy")
 animation = &"Purple_animation"
-frame = 6
-frame_progress = 0.351805
+frame_progress = 0.297861
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

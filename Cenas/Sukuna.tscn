@@ -131,7 +131,8 @@ script = ExtResource("1_hust6")
 position = Vector2(2, -9.30928)
 scale = Vector2(0.428571, 0.306057)
 sprite_frames = SubResource("SpriteFrames_6hw8b")
-animation = &"Sukuna_Andando"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="colisao_sukuna" type="CollisionShape2D" parent="."]
 position = Vector2(2, -10)
@@ -143,3 +144,11 @@ shape = SubResource("CapsuleShape2D_gntv0")
 position = Vector2(2, -9.5)
 shape = SubResource("RectangleShape2D_qvbda")
 debug_color = Color(0.812688, 0.372999, 0.454172, 0.42)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(2, -9.5)
+scale = Vector2(0.7, 1.45)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 8)
+collision_mask = 2
