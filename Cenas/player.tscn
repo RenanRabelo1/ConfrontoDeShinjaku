@@ -1,11 +1,10 @@
-[gd_scene load_steps=47 format=3 uid="uid://7jh5s0mw31cg"]
+[gd_scene load_steps=40 format=3 uid="uid://7jh5s0mw31cg"]
 
 [ext_resource type="Script" uid="uid://gr4nti5qdyks" path="res://Cenas/player.gd" id="1_pmvhq"]
 [ext_resource type="Texture2D" uid="uid://blgp1lfx7plp8" path="res://Assets Jujutsu Kaisen/Animations/Gojo/Soco_Alto_Gojo.png" id="2_e2nbm"]
 [ext_resource type="Texture2D" uid="uid://camreh7vxwoxk" path="res://Aseprite/Gojo Satoru Sprite sheet/Sprite Sheet Gojo tirando roupa.png" id="2_iersn"]
 [ext_resource type="Texture2D" uid="uid://djx67mxrsl5fx" path="res://Assets Jujutsu Kaisen/Animations/Gojo/Chute_Baixo_Gojo.png" id="2_ybr15"]
 [ext_resource type="Texture2D" uid="uid://33cxh4k446nh" path="res://Aseprite/Gojo Satoru Sprite sheet/Gojo Walking.png" id="3_iersn"]
-[ext_resource type="Texture2D" uid="uid://dpax74qdpkmt0" path="res://Assets Jujutsu Kaisen/Purple Gojo.png" id="3_jx05c"]
 [ext_resource type="Texture2D" uid="uid://mvkecvwm65ux" path="res://Aseprite/Gojo Satoru Sprite sheet/Gojo WalkingInverted.png" id="4_5p0qj"]
 [ext_resource type="Texture2D" uid="uid://icb7ln83onic" path="res://Assets Jujutsu Kaisen/Animations/Gojo/Gojo Jumping.png" id="5_8vhvd"]
 [ext_resource type="Script" uid="uid://dcioi3c12jyoq" path="res://Cenas/animacao_gojo.gd" id="8_e2nbm"]
@@ -45,30 +44,6 @@ region = Rect2(195, 0, 65, 86)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4j5ex"]
 atlas = ExtResource("2_e2nbm")
 region = Rect2(264, 0, 66, 86)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dj8y3"]
-atlas = ExtResource("3_jx05c")
-region = Rect2(0, 0, 71, 102)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wh05g"]
-atlas = ExtResource("3_jx05c")
-region = Rect2(74, 0, 74, 102)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8v2xp"]
-atlas = ExtResource("3_jx05c")
-region = Rect2(148, 0, 74, 102)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t7cd8"]
-atlas = ExtResource("3_jx05c")
-region = Rect2(296, 0, 74, 102)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sjhg2"]
-atlas = ExtResource("3_jx05c")
-region = Rect2(222, 0, 74, 102)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jnm6q"]
-atlas = ExtResource("3_jx05c")
-region = Rect2(369, 0, 123, 102)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yuqgu"]
 atlas = ExtResource("2_iersn")
@@ -187,29 +162,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dj8y3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wh05g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8v2xp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t7cd8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sjhg2")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_jnm6q")
-}],
-"loop": false,
-"name": &"Vazio_Roxo",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_yuqgu")
 }, {
 "duration": 1.0,
@@ -302,9 +254,7 @@ script = ExtResource("1_pmvhq")
 position = Vector2(0, 8)
 scale = Vector2(0.5360223, 0.411651)
 sprite_frames = SubResource("SpriteFrames_e2nbm")
-animation = &"Attack_Cima_Gojo"
-frame = 4
-frame_progress = 1.0
+animation = &"Attack_Baixo_Gojo"
 script = ExtResource("8_e2nbm")
 
 [node name="TimerAttack" type="Timer" parent="Animacao_Gojo"]

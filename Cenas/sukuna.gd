@@ -27,6 +27,7 @@ func take_damage():
 		$ProgressBar.value -= 1
 		print("Dano tomado! Vida: ", $ProgressBar.value)
 
+
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.name == "AttackAreaCima" and area.monitoring:  # Só toma dano se a área estiver monitorando
 		take_damage()# Replace with function body.
