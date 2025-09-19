@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bo1a6isilwsgf"]
+[gd_scene load_steps=24 format=3 uid="uid://bo1a6isilwsgf"]
 
 [ext_resource type="Script" uid="uid://mse0p7v74jny" path="res://Cenas/sukuna.gd" id="1_hust6"]
 [ext_resource type="Texture2D" uid="uid://d3ud3umpwtv46" path="res://Assets Jujutsu Kaisen/Sukuna Walking.png" id="1_kth8y"]
@@ -132,6 +132,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhnam"]
+size = Vector2(25, 20)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gntv0"]
 height = 36.0
 
@@ -148,12 +151,18 @@ animation = &"Attack"
 autoplay = "idle"
 speed_scale = 0.0
 
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="ColisaoDeCima" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-4, -18)
+shape = SubResource("RectangleShape2D_uhnam")
+
 [node name="colisao_sukuna" type="CollisionShape2D" parent="."]
 position = Vector2(-4, -8)
 shape = SubResource("CapsuleShape2D_gntv0")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(-4, -7)
+position = Vector2(-4, -5)
 scale = Vector2(0.95, 1.775)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
@@ -163,3 +172,6 @@ offset_right = 20.0
 offset_bottom = -28.0
 max_value = 20.0
 value = 20.0
+
+[connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://7jh5s0mw31cg"]
+[gd_scene load_steps=47 format=3 uid="uid://7jh5s0mw31cg"]
 
 [ext_resource type="Script" uid="uid://gr4nti5qdyks" path="res://Cenas/player.gd" id="1_pmvhq"]
 [ext_resource type="Texture2D" uid="uid://blgp1lfx7plp8" path="res://Assets Jujutsu Kaisen/Animations/Gojo/Soco_Alto_Gojo.png" id="2_e2nbm"]
@@ -181,7 +181,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4j5ex")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_Cima_Gojo",
 "speed": 5.0
 }, {
@@ -204,7 +204,7 @@ animations = [{
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_jnm6q")
 }],
-"loop": true,
+"loop": false,
 "name": &"Vazio_Roxo",
 "speed": 12.0
 }, {
@@ -218,7 +218,7 @@ animations = [{
 "duration": 100.0,
 "texture": SubResource("AtlasTexture_8vhvd")
 }],
-"loop": true,
+"loop": false,
 "name": &"battle_preparation_gojo",
 "speed": 5.0
 }, {
@@ -287,136 +287,33 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybr15"]
-radius = 11.0
+radius = 7.0
 height = 34.0
 
-[sub_resource type="Animation" id="Animation_dj8y3"]
-resource_name = "Attack"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_e2nbm")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.46, 1.02, 1.66, 1.8333334),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [7, 7, 6, 5, 5]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.46, 1.02, 1.6333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 4]
-}
-
-[sub_resource type="Animation" id="Animation_wh05g"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_e2nbm")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8v2xp"]
-_data = {
-&"Attack": SubResource("Animation_dj8y3"),
-&"RESET": SubResource("Animation_wh05g")
-}
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ybr15"]
+a = Vector2(13, 0)
+b = Vector2(37, 0)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 7
 script = ExtResource("1_pmvhq")
 
 [node name="Animacao_Gojo" type="AnimatedSprite2D" parent="."]
-position = Vector2(3, 7)
+position = Vector2(0, 8)
 scale = Vector2(0.5360223, 0.411651)
 sprite_frames = SubResource("SpriteFrames_e2nbm")
-animation = &"Attack_Baixo_Gojo"
-autoplay = "battle_preparation_gojo"
-frame = 1
+animation = &"Attack_Cima_Gojo"
+frame = 4
+frame_progress = 1.0
 script = ExtResource("8_e2nbm")
 
-[node name="TimerAttack" type="Timer" parent="."]
-wait_time = 2.0
+[node name="TimerAttack" type="Timer" parent="Animacao_Gojo"]
+
+[node name="TimerColisaoAttack" type="Timer" parent="Animacao_Gojo"]
+wait_time = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 8)
+position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_ybr15")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
@@ -428,16 +325,12 @@ offset_bottom = -8.0
 max_value = 10.0
 value = 10.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_8v2xp")
-}
+[node name="AttackAreaCima" type="Area2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(10, 4)
-scale = Vector2(0.4851253, 0.53488374)
-texture = ExtResource("2_e2nbm")
+[node name="ColisionShapeCima" type="CollisionShape2D" parent="AttackAreaCima"]
+position = Vector2(-10, 5)
+shape = SubResource("SegmentShape2D_ybr15")
 
 [connection signal="animation_finished" from="Animacao_Gojo" to="." method="_on_animacao_gojo_animation_finished"]
-[connection signal="timeout" from="TimerAttack" to="." method="_on_timer_attack_timeout"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Animacao_Gojo/TimerAttack" to="." method="_on_timer_attack_timeout"]
+[connection signal="timeout" from="Animacao_Gojo/TimerColisaoAttack" to="." method="_on_timer_colisao_attack_timeout"]
