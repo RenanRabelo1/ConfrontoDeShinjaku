@@ -43,6 +43,10 @@ func _physics_process(delta: float) -> void:
 		is_attacking = true
 		$Animacao_Gojo.play("Attack_Cima_Gojo")
 		$TimerAttack.start()
+	if Input.is_action_just_pressed("Rasteira_Gojo"):
+		is_attacking = true
+		$Animacao_Gojo.play("Attack_Baixo_Gojo")
+		$TimerAttack.start()
 	
 	update_animation()
 	
