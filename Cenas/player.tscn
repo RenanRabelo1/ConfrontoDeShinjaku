@@ -244,7 +244,7 @@ height = 34.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ybr15"]
 a = Vector2(13, 0)
-b = Vector2(37, 0)
+b = Vector2(21, 0)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 7
@@ -254,7 +254,7 @@ script = ExtResource("1_pmvhq")
 position = Vector2(0, 8)
 scale = Vector2(0.5360223, 0.411651)
 sprite_frames = SubResource("SpriteFrames_e2nbm")
-animation = &"Attack_Baixo_Gojo"
+animation = &"Attack_Cima_Gojo"
 script = ExtResource("8_e2nbm")
 
 [node name="TimerAttack" type="Timer" parent="Animacao_Gojo"]
