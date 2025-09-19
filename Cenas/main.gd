@@ -3,7 +3,6 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$AudioStreamPlayer2D.play()
 	$Button.hide()
 
 
@@ -15,7 +14,7 @@ func _process(delta: float) -> void:
 	
 
 func _on_button_pressed() -> void: 
-	$VideoStreamPlayer2.play()# Replace with function body.
+	$LapseVermelho.play() # Replace with function body.
 	$Button.visible = false
 	$Button.disabled = true
 
@@ -26,4 +25,4 @@ func _on_timer_inicial_button_timeout() -> void:
 
 
 func _on_video_stream_player_2_finished() -> void:
-	$VideoStreamPlayer2.stop() # Replace with function body.
+	$LapseVermelho.stop() # Replace with function body.

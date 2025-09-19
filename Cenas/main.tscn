@@ -68,7 +68,7 @@ wait_time = 4.0
 one_shot = true
 autostart = true
 
-[node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="."]
+[node name="LapseVermelho" type="VideoStreamPlayer" parent="."]
 offset_left = -576.0
 offset_top = -320.0
 offset_right = 576.0
@@ -85,5 +85,5 @@ text = "Lapse Red
 "
 
 [connection signal="timeout" from="TimerInicialButton" to="." method="_on_timer_inicial_button_timeout"]
-[connection signal="finished" from="VideoStreamPlayer2" to="." method="_on_video_stream_player_2_finished"]
+[connection signal="finished" from="LapseVermelho" to="." method="_on_video_stream_player_2_finished"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,8 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://7jh5s0mw31cg"]
+[gd_scene load_steps=44 format=3 uid="uid://7jh5s0mw31cg"]
 
 [ext_resource type="Script" uid="uid://gr4nti5qdyks" path="res://Cenas/player.gd" id="1_pmvhq"]
+[ext_resource type="Texture2D" uid="uid://blgp1lfx7plp8" path="res://Assets Jujutsu Kaisen/Animations/Gojo/Soco_Alto_Gojo.png" id="2_e2nbm"]
 [ext_resource type="Texture2D" uid="uid://camreh7vxwoxk" path="res://Aseprite/Gojo Satoru Sprite sheet/Sprite Sheet Gojo tirando roupa.png" id="2_iersn"]
-[ext_resource type="Texture2D" uid="uid://dqflmxgyc65yg" path="res://Assets Jujutsu Kaisen/Lapse Red.png" id="2_jx05c"]
 [ext_resource type="Texture2D" uid="uid://33cxh4k446nh" path="res://Aseprite/Gojo Satoru Sprite sheet/Gojo Walking.png" id="3_iersn"]
 [ext_resource type="Texture2D" uid="uid://dpax74qdpkmt0" path="res://Assets Jujutsu Kaisen/Purple Gojo.png" id="3_jx05c"]
 [ext_resource type="Texture2D" uid="uid://mvkecvwm65ux" path="res://Aseprite/Gojo Satoru Sprite sheet/Gojo WalkingInverted.png" id="4_5p0qj"]
@@ -10,24 +10,24 @@
 [ext_resource type="Script" uid="uid://dcioi3c12jyoq" path="res://Cenas/animacao_gojo.gd" id="8_e2nbm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_axwfv"]
-atlas = ExtResource("2_jx05c")
-region = Rect2(90, 0, 45, 101)
+atlas = ExtResource("2_e2nbm")
+region = Rect2(52, 0, 52, 86)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8tubf"]
-atlas = ExtResource("2_jx05c")
-region = Rect2(136, 0, 68, 101)
+atlas = ExtResource("2_e2nbm")
+region = Rect2(0, 0, 50, 86)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a4yfx"]
-atlas = ExtResource("2_jx05c")
-region = Rect2(285, 0, 95, 101)
+atlas = ExtResource("2_e2nbm")
+region = Rect2(116, 0, 58, 86)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_alogn"]
-atlas = ExtResource("2_jx05c")
-region = Rect2(380, 0, 95, 101)
+atlas = ExtResource("2_e2nbm")
+region = Rect2(195, 0, 65, 86)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4j5ex"]
-atlas = ExtResource("2_jx05c")
-region = Rect2(488, 0, 61, 101)
+atlas = ExtResource("2_e2nbm")
+region = Rect2(264, 0, 66, 86)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dj8y3"]
 atlas = ExtResource("3_jx05c")
@@ -147,9 +147,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4j5ex")
 }],
-"loop": true,
-"name": &"Lapse_Vermelho",
-"speed": 5.0
+"loop": false,
+"name": &"Attack_Cima_Gojo",
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -181,7 +181,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jx05c")
 }, {
-"duration": 1.0,
+"duration": 100.0,
 "texture": SubResource("AtlasTexture_8vhvd")
 }],
 "loop": true,
@@ -253,28 +253,91 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybr15"]
-radius = 8.0
-height = 28.0
+radius = 11.0
+height = 34.0
+
+[sub_resource type="Animation" id="Animation_dj8y3"]
+resource_name = "Attack"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animacao_Gojo:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_e2nbm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animacao_Gojo:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.4, 0.6333333, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_wh05g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animacao_Gojo:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8v2xp"]
+_data = {
+&"Attack": SubResource("Animation_dj8y3"),
+&"RESET": SubResource("Animation_wh05g")
+}
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 6
+collision_mask = 7
 script = ExtResource("1_pmvhq")
 
 [node name="Animacao_Gojo" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.999999, 15.6807)
-scale = Vector2(0.36419, 0.310926)
+position = Vector2(3, 7)
+scale = Vector2(0.5360223, 0.411651)
 sprite_frames = SubResource("SpriteFrames_e2nbm")
-animation = &"battle_preparation_gojo"
+animation = &"Attack_Cima_Gojo"
 autoplay = "battle_preparation_gojo"
 script = ExtResource("8_e2nbm")
 
+[node name="TimerAttack" type="Timer" parent="."]
+wait_time = 2.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 16)
+position = Vector2(2, 8)
 shape = SubResource("CapsuleShape2D_ybr15")
 
-[node name="bullet_position" type="Marker2D" parent="."]
-position = Vector2(32, -4)
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(5, 0)
+offset_left = -14.0
+offset_top = -35.0
+offset_right = 27.0
+offset_bottom = -8.0
+max_value = 10.0
+value = 10.0
 
-[node name="shoot_cooldown" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8v2xp")
+}
+
+[connection signal="animation_finished" from="Animacao_Gojo" to="." method="_on_animacao_gojo_animation_finished"]
+[connection signal="timeout" from="TimerAttack" to="." method="_on_timer_attack_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

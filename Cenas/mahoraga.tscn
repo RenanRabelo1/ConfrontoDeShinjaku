@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://djhwdaalo4c6k"]
+[gd_scene load_steps=18 format=3 uid="uid://djhwdaalo4c6k"]
 
+[ext_resource type="Script" uid="uid://bjlqku4yd85dp" path="res://Cenas/mahoraga.gd" id="1_0eowr"]
 [ext_resource type="Texture2D" uid="uid://cgpw5kdb5dt4b" path="res://Assets Jujutsu Kaisen/Mahoraga Jumping.png" id="1_udc4a"]
 [ext_resource type="Texture2D" uid="uid://c8rujvdw5ss2m" path="res://Assets Jujutsu Kaisen/Mahoraga Melee.png" id="2_0eowr"]
 [ext_resource type="Texture2D" uid="uid://bukef5jd1hklh" path="res://Assets Jujutsu Kaisen/Mahoraga Running.png" id="3_7d3va"]
@@ -103,21 +104,23 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rom7q"]
-size = Vector2(50, 65.5)
+size = Vector2(33, 45)
 
 [node name="Mahoraga" type="CharacterBody2D"]
+script = ExtResource("1_0eowr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2, -1)
-scale = Vector2(0.905882, 0.940874)
+position = Vector2(8.749993, 15.462723)
+scale = Vector2(0.652941, 0.62428313)
 sprite_frames = SubResource("SpriteFrames_jq7gc")
 animation = &"Mahoraga_Running"
 autoplay = "Mahoraga_Running"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-12, 0.25)
+position = Vector2(-0.5, 16.5)
 shape = SubResource("RectangleShape2D_rom7q")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(4, 8.000001)
+scale = Vector2(2.45, 3.225)
+rect = Rect2(-8.979591, -4.3410854, 13.87755, 13.953489)

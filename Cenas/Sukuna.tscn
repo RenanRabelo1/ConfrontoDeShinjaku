@@ -1,9 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://bo1a6isilwsgf"]
+[gd_scene load_steps=23 format=3 uid="uid://bo1a6isilwsgf"]
 
-[ext_resource type="Script" uid="uid://cttefbl7eqjbj" path="res://Cenas/sukuna.gd" id="1_hust6"]
+[ext_resource type="Script" uid="uid://mse0p7v74jny" path="res://Cenas/sukuna.gd" id="1_hust6"]
 [ext_resource type="Texture2D" uid="uid://d3ud3umpwtv46" path="res://Assets Jujutsu Kaisen/Sukuna Walking.png" id="1_kth8y"]
+[ext_resource type="Texture2D" uid="uid://dttd5xft23wpg" path="res://Assets Jujutsu Kaisen/Animations/Sukuna/Sukuna Fire Arrow.png" id="2_8erxx"]
 [ext_resource type="Texture2D" uid="uid://b7j2tevx6p5t0" path="res://Assets Jujutsu Kaisen/Sukuna Standing.png" id="2_hust6"]
-[ext_resource type="PackedScene" uid="uid://20fj5lmcmmna" path="res://Cenas/hitbox.tscn" id="3_uhnam"]
+[ext_resource type="Texture2D" uid="uid://p05womsk41l1" path="res://Assets Jujutsu Kaisen/Animations/Sukuna/Spin Adaptação Sukuna.png" id="2_uhnam"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hw8b"]
+atlas = ExtResource("2_8erxx")
+region = Rect2(75, 0, 75, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8erxx"]
 atlas = ExtResource("1_kth8y")
@@ -65,6 +70,17 @@ region = Rect2(0, 0, 42, 96)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_6hw8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uhnam")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8erxx")
 }, {
 "duration": 1.0,
@@ -117,38 +133,33 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gntv0"]
-radius = 6.0
+height = 36.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvbda"]
-size = Vector2(15, 29)
-
-[node name="Sukuna" type="CharacterBody2D"]
+[node name="sukuna" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_hust6")
 
 [node name="Animacao_Sukuna" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, -9.30928)
-scale = Vector2(0.428571, 0.306057)
+position = Vector2(-2, -5.00001)
+scale = Vector2(0.619047, 0.395833)
 sprite_frames = SubResource("SpriteFrames_6hw8b")
-animation = &"idle"
+animation = &"Attack"
 autoplay = "idle"
+speed_scale = 0.0
 
 [node name="colisao_sukuna" type="CollisionShape2D" parent="."]
-position = Vector2(2, -10)
+position = Vector2(-4, -8)
 shape = SubResource("CapsuleShape2D_gntv0")
 
-[node name="hitbox" parent="." instance=ExtResource("3_uhnam")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(2, -9.5)
-shape = SubResource("RectangleShape2D_qvbda")
-debug_color = Color(0.812688, 0.372999, 0.454172, 0.42)
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(2, -9.5)
-scale = Vector2(0.7, 1.45)
+position = Vector2(-4, -7)
+scale = Vector2(0.95, 1.775)
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 8)
-collision_mask = 2
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -25.0
+offset_top = -55.0
+offset_right = 20.0
+offset_bottom = -28.0
+max_value = 20.0
+value = 20.0

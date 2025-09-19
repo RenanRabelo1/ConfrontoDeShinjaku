@@ -10,9 +10,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+@onready var progress_bar: ProgressBar = $ProgressBar
+
+func take_damage():
+	$"../ProgressBar".value -= 1
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullets"):
 		area.queue_free()
-		owner.queue_free()
+		take_damage()
 	

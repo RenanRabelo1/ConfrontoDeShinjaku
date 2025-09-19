@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsscw48o80obv"]
+
+[ext_resource type="VideoStream" uid="uid://cf58pwofjh6rc" path="res://Assets Jujutsu Kaisen/ExpansaodeDominio.ogv" id="1_b1t5f"]
+[ext_resource type="Texture2D" uid="uid://62yaa8tsoa7i" path="res://Assets Jujutsu Kaisen/GroundBlockjujutsu.png" id="2_g02tx"]
+[ext_resource type="Texture2D" uid="uid://cvs5weyhtutdn" path="res://Assets Jujutsu Kaisen/Brickjujutsu.png" id="3_g02tx"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8dfwk"]
+texture = ExtResource("2_g02tx")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5jbqm"]
+texture = ExtResource("3_g02tx")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_5jbqm"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 7
+sources/0 = SubResource("TileSetAtlasSource_8dfwk")
+sources/1 = SubResource("TileSetAtlasSource_5jbqm")
+
+[node name="cena_4_0" type="Node"]
+
+[node name="ExpansaoDeDominio" type="VideoStreamPlayer" parent="."]
+offset_left = -575.0
+offset_top = -324.0
+offset_right = 577.0
+offset_bottom = 324.0
+stream = ExtResource("1_b1t5f")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, 1)
+tile_set = SubResource("TileSet_5jbqm")

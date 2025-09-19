@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcdo7mkh5xyhl"]
+
+[ext_resource type="Script" uid="uid://qnd46g1cp84l" path="res://Cenas/hitboxgojo.gd" id="1_r0tit"]
+
+[node name="hitboxgojo" type="Area2D"]
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("1_r0tit")

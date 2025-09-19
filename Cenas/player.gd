@@ -1,67 +1,75 @@
 extends CharacterBody2D
 
-
 class_name Player
 
-@export_group("Locomotion")
-@export var speed = 200
+@export var speed = 100
 @export var jump_velocity = -350
-@export var run_speed_damping = 0.5
+@export var acceleration = 5.0
+@export var friction = 10.0
+var gravity = 980
+var is_attacking: bool = false
 
-const BULLET_SCENE = preload("res://Cenas/bullet.tscn")
-
-
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var is_shooting := false
-
-@onready var bullet_position: Marker2D = $bullet_position
-@onready var shoot_cooldown: Timer = $shoot_cooldown
-@onready var raycast = $RayCast2D
+func _ready():
+	# Garantir que gravity tem um valor
+	var project_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+	if project_gravity:
+		gravity = project_gravity
 
 func _physics_process(delta: float) -> void:
+	# Aplicar gravidade
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_velocity
-		
-	if Input.is_action_just_released("jump") and velocity.y < 0:
-		velocity.y *= 0.5
 	
-	var direction = Input.get_axis("left", "right")
-	if Input.is_action_pressed("left"):
-		if sign(bullet_position.position.x) == 1:
-			bullet_position.position.x *= -1
-	if Input.is_action_pressed("right"):
-		if sign(bullet_position.position.x) == -1:
-			bullet_position.position.x *= -1
-	if direction:
-		velocity.x = lerp(velocity.x, speed * direction, run_speed_damping * delta)
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed * delta)
+	# Só permite movimento se não estiver atacando
+	if not is_attacking:
+		# Pular
+		if Input.is_action_just_pressed("jump_gojo") and is_on_floor():
+			velocity.y = jump_velocity
+		
+		# Pulo mais curto se soltar o botão
+		if Input.is_action_just_released("jump_gojo") and velocity.y < 0:
+			velocity.y *= 0.5
+		
+		# Movimento horizontal suave
+		var direction = Input.get_axis("left_gojo", "right_gojo")
+		
+		if direction != 0:
+			velocity.x = move_toward(velocity.x, direction * speed, acceleration)
+		else:
+			velocity.x = move_toward(velocity.x, 0, friction)
+	
+	# Ataque
+	if Input.is_action_just_pressed("Attack_Cima_Gojo"):
+		is_attacking = true
+		$Animacao_Gojo.play("Attack_Cima_Gojo")
+		$TimerAttack.start()
+	
+	update_animation()
 	
 	move_and_slide()
-	
-	if velocity.x > 0:
-		$Animacao_Gojo.play("walk_gojo")
-	elif velocity.x < 0:
-		$Animacao_Gojo.play("walk_gojo_inverted")
-	elif Input.is_action_pressed("Vazio_Roxo"):
-		is_shooting = true
-		$Animacao_Gojo.play("Vazio_Roxo")
-		if shoot_cooldown.is_stopped():
-			shoot_bullet()
-	else:
-		$Animacao_Gojo.stop()
-		is_shooting = false
-func shoot_bullet():
-	var bullet_instance = BULLET_SCENE.instantiate()
-	if sign(bullet_position.position.x) == 1:
-		bullet_instance.set_direction(1)
-	else:
-		bullet_instance.set_direction(-1)
+
+func update_animation():
+	if is_attacking:
+		$AnimationPlayer.play("Attack")
 		
-	add_sibling(bullet_instance)
-	bullet_instance.global_position = bullet_position.global_position
-	shoot_cooldown.start()
-	
+	elif not is_on_floor():
+		$Animacao_Gojo.play("jump_gojo")
+	else:
+		if velocity.x > 0:
+			$Animacao_Gojo.play("walk_gojo")
+		elif velocity.x < 0:
+			$Animacao_Gojo.play("walk_gojo_inverted")
+		else:
+			$Animacao_Gojo.play("battle_preparation_gojo")
+
+@onready var progress_bar: ProgressBar = $ProgressBar
+
+func take_damage():
+	if progress_bar:
+		progress_bar.value -= 1
+		print("Dano tomado! Vida: ", progress_bar.value)
+
+
+func _on_timer_attack_timeout() -> void:
+	$Animacao_Gojo.stop()
+	is_attacking = false

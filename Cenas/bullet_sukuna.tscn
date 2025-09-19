@@ -1,0 +1,103 @@
+[gd_scene load_steps=15 format=3 uid="uid://fcjqm2yr17dv"]
+
+[ext_resource type="Script" uid="uid://b3pxpdxvd2qlp" path="res://Cenas/bullet_sukuna.gd" id="1_i6jx6"]
+[ext_resource type="Texture2D" uid="uid://b6qib4w8yt86x" path="res://Assets Jujutsu Kaisen/Animations/Sukuna/Arrow Sprite.png" id="2_wqnnd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqnnd"]
+atlas = ExtResource("2_wqnnd")
+region = Rect2(0, 0, 18, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvblk"]
+atlas = ExtResource("2_wqnnd")
+region = Rect2(21, 0, 21, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p2pr"]
+atlas = ExtResource("2_wqnnd")
+region = Rect2(46, 0, 23, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jm3l"]
+atlas = ExtResource("2_wqnnd")
+region = Rect2(74, 0, 37, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk7jb"]
+atlas = ExtResource("2_wqnnd")
+region = Rect2(162, 0, 54, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43i6q"]
+atlas = ExtResource("2_wqnnd")
+region = Rect2(108, 0, 54, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2dx4"]
+atlas = ExtResource("2_wqnnd")
+region = Rect2(213, 0, 71, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpqvy"]
+atlas = ExtResource("2_wqnnd")
+region = Rect2(445, 0, 89, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlbf0"]
+atlas = ExtResource("2_wqnnd")
+region = Rect2(356, 0, 89, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoofd"]
+atlas = ExtResource("2_wqnnd")
+region = Rect2(267, 0, 89, 91)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wt6br"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqnnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvblk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0p2pr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jm3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qk7jb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43i6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2dx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpqvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlbf0")
+}, {
+"duration": 100.0,
+"texture": SubResource("AtlasTexture_uoofd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0c7e8"]
+radius = 9.0
+height = 58.0
+
+[node name="bullet_sukuna" type="Area2D" groups=["bullets2"]]
+position = Vector2(-12, 2)
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("1_i6jx6")
+
+[node name="AnimacaoSukunaBullet" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_wt6br")
+autoplay = "default"
+frame_progress = 0.30837265
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, -4)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_0c7e8")
