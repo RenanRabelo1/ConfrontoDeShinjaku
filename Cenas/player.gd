@@ -56,6 +56,7 @@ func start_attack():
 func update_animation():
 	if Input.is_action_just_pressed("AttackGojoUp"):
 		$Animacao_Gojo.play("Attack_Cima_Gojo")
+		$AttackArea/ColisionShape.disabled = false
 		is_attacking = true
 	if not is_on_floor() && is_attacking == false:
 		animacao.play("jump_gojo")
@@ -74,4 +75,5 @@ func take_damage():
 
 func _on_animacao_gojo_animation_finished() -> void:
 	if $Animacao_Gojo.animation == "Attack_Cima_Gojo":
+		$AttackArea/ColisionShape.disabled =  true
 		is_attacking = false

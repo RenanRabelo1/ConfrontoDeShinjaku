@@ -158,7 +158,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_Cima_Gojo",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -167,10 +167,10 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jx05c")
 }, {
-"duration": 100.0,
+"duration": 200.0,
 "texture": SubResource("AtlasTexture_8vhvd")
 }],
-"loop": false,
+"loop": true,
 "name": &"battle_preparation_gojo",
 "speed": 5.0
 }, {
@@ -239,22 +239,20 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybr15"]
-radius = 7.0
-height = 34.0
+radius = 15.0
+height = 44.0
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_ybr15"]
-a = Vector2(13, 0)
-b = Vector2(21, 0)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e2nbm"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 7
 script = ExtResource("1_pmvhq")
 
 [node name="Animacao_Gojo" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 8)
-scale = Vector2(0.5360223, 0.411651)
+position = Vector2(6.5317106, 16.649504)
+scale = Vector2(0.78724194, 0.61280227)
 sprite_frames = SubResource("SpriteFrames_e2nbm")
-animation = &"Attack_Cima_Gojo"
+animation = &"battle_preparation_gojo"
 script = ExtResource("8_e2nbm")
 
 [node name="TimerAttack" type="Timer" parent="Animacao_Gojo"]
@@ -263,7 +261,7 @@ script = ExtResource("8_e2nbm")
 wait_time = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(5, 20)
 shape = SubResource("CapsuleShape2D_ybr15")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
@@ -275,11 +273,11 @@ offset_bottom = -8.0
 max_value = 10.0
 value = 10.0
 
-[node name="AttackAreaCima" type="Area2D" parent="."]
+[node name="AttackArea" type="Area2D" parent="."]
 
-[node name="ColisionShapeCima" type="CollisionShape2D" parent="AttackAreaCima"]
-position = Vector2(-10, 5)
-shape = SubResource("SegmentShape2D_ybr15")
+[node name="ColisionShape" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(34, 13)
+shape = SubResource("CapsuleShape2D_e2nbm")
 
 [connection signal="animation_finished" from="Animacao_Gojo" to="." method="_on_animacao_gojo_animation_finished"]
 [connection signal="timeout" from="Animacao_Gojo/TimerAttack" to="." method="_on_timer_attack_timeout"]
