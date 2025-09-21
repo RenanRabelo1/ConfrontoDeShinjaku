@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bo1a6isilwsgf"]
+[gd_scene load_steps=28 format=3 uid="uid://bo1a6isilwsgf"]
 
 [ext_resource type="Script" uid="uid://mse0p7v74jny" path="res://Cenas/sukuna.gd" id="1_hust6"]
 [ext_resource type="Texture2D" uid="uid://d3ud3umpwtv46" path="res://Assets Jujutsu Kaisen/Sukuna Walking.png" id="1_kth8y"]
@@ -159,10 +159,7 @@ a = Vector2(35, 4)
 b = Vector2(14, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhnam"]
-size = Vector2(25, 24)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8erxx"]
-size = Vector2(24, 26)
+size = Vector2(25, 26)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gntv0"]
 height = 60.0
@@ -188,12 +185,8 @@ disabled = true
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="ColisaoDeCima" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -14)
+position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_uhnam")
-
-[node name="ColisaoDeBaixo" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, 16)
-shape = SubResource("RectangleShape2D_8erxx")
 
 [node name="colisao_sukuna" type="CollisionShape2D" parent="."]
 position = Vector2(1, 2)

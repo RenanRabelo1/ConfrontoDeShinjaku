@@ -6,6 +6,7 @@ class_name Player
 @export var jump_velocity: float = -350.0
 var gravity: float = 980.0
 var is_attacking = false
+var is_agachando = false
 
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var animacao = $Animacao_Gojo
@@ -24,7 +25,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
-	if not is_attacking:
+	if is_attacking == false && is_agachando == false:
 		handle_movement()
 	
 	update_animation()
@@ -58,13 +59,20 @@ func update_animation():
 		$Animacao_Gojo.play("Attack_Cima_Gojo")
 		$AttackArea/ColisionShape.disabled = false
 		is_attacking = true
-	if not is_on_floor() && is_attacking == false:
+	if Input.is_action_pressed("gojo_agachando") && is_attacking == false:
+		$Animacao_Gojo.play("gojo_agachando")
+		is_agachando = true
+		$Hitbox/colisao_cima.disabled = true
+	elif Input.is_action_just_released("gojo_agachando") && is_attacking == false:
+		$Hitbox/colisao_cima.disabled = false
+		is_agachando = false
+	elif not is_on_floor():
 		animacao.play("jump_gojo")
 	else:
-		if abs(velocity.x) > 0 && is_attacking == false:
+		if abs(velocity.x) > 0 && is_attacking == false && is_agachando == false:
 			animacao.play("walk_gojo")
 		else:
-			if is_attacking == false:
+			if is_attacking == false && is_agachando == false:
 				animacao.play("battle_preparation_gojo")
   
 
