@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://camreh7vxwoxk" path="res://Aseprite/Gojo Satoru Sprite sheet/Sprite Sheet Gojo tirando roupa.png" id="2_iersn"]
 [ext_resource type="Texture2D" uid="uid://33cxh4k446nh" path="res://Aseprite/Gojo Satoru Sprite sheet/Gojo Walking.png" id="3_iersn"]
 [ext_resource type="Texture2D" uid="uid://dq24h10j4k0ov" path="res://Assets Jujutsu Kaisen/Animations/Gojo/gojo_agacha.png" id="4_8vhvd"]
+[ext_resource type="Texture2D" uid="uid://cj7ff5k556vhw" path="res://Assets Jujutsu Kaisen/Animations/Gojo/Gojo Dash.png" id="4_e2nbm"]
 [ext_resource type="Texture2D" uid="uid://icb7ln83onic" path="res://Assets Jujutsu Kaisen/Animations/Gojo/Gojo Jumping.png" id="5_8vhvd"]
 [ext_resource type="Script" uid="uid://dcioi3c12jyoq" path="res://Cenas/animacao_gojo.gd" id="8_e2nbm"]
 
@@ -35,10 +36,6 @@ region = Rect2(504, 0, 63, 88)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8vhvd"]
 atlas = ExtResource("2_iersn")
 region = Rect2(567, 0, 63, 88)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e2nbm"]
-atlas = ExtResource("4_8vhvd")
-region = Rect2(0, 0, 63, 87)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ka0he"]
 atlas = ExtResource("5_8vhvd")
@@ -93,7 +90,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_Cima_Gojo",
-"speed": 20.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -111,7 +108,36 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e2nbm")
+"texture": ExtResource("4_e2nbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e2nbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e2nbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e2nbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e2nbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e2nbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e2nbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e2nbm")
+}],
+"loop": false,
+"name": &"dash_gojo",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8vhvd")
 }],
 "loop": false,
 "name": &"gojo_agachando",
@@ -156,38 +182,36 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybr15"]
-radius = 15.0
-height = 54.0
+radius = 9.0
+height = 48.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_e2nbm"]
 b = Vector2(24, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2nbm"]
-size = Vector2(27, 27)
+size = Vector2(16, 21.5)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 7
 script = ExtResource("1_pmvhq")
 
+[node name="Timer_DG" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="Timer_DG_can_dash" type="Timer" parent="."]
+
 [node name="Animacao_Gojo" type="AnimatedSprite2D" parent="."]
-position = Vector2(6.5317106, 20.343102)
-scale = Vector2(0.78724194, 0.69674766)
+position = Vector2(6, 18)
+scale = Vector2(0.78724194, 0.6827975)
 sprite_frames = SubResource("SpriteFrames_e2nbm")
-animation = &"battle_preparation_gojo"
-frame = 2
-frame_progress = 0.0474207
+animation = &"dash_gojo"
 script = ExtResource("8_e2nbm")
-
-[node name="TimerAttack" type="Timer" parent="Animacao_Gojo"]
-
-[node name="TimerColisaoAttack" type="Timer" parent="Animacao_Gojo"]
-wait_time = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5, 20)
 shape = SubResource("CapsuleShape2D_ybr15")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBarGojo" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(5, 0)
 offset_left = -14.0
 offset_top = -35.0
@@ -199,17 +223,17 @@ value = 10.0
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="ColisionShape" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(15, 8)
+position = Vector2(17, 8)
 shape = SubResource("SegmentShape2D_e2nbm")
 disabled = true
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="colisao_cima" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-1, 6)
+position = Vector2(5, 9.75)
 shape = SubResource("RectangleShape2D_e2nbm")
 
+[connection signal="timeout" from="Timer_DG" to="." method="_on_timer_dg_timeout"]
+[connection signal="timeout" from="Timer_DG_can_dash" to="." method="_on_timer_dg_can_dash_timeout"]
 [connection signal="animation_finished" from="Animacao_Gojo" to="." method="_on_animacao_gojo_animation_finished"]
-[connection signal="timeout" from="Animacao_Gojo/TimerAttack" to="." method="_on_timer_attack_timeout"]
-[connection signal="timeout" from="Animacao_Gojo/TimerColisaoAttack" to="." method="_on_timer_colisao_attack_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

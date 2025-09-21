@@ -5,8 +5,14 @@ extends CharacterBody2D
 var gravity: float = 980.0
 var is_agachando = false
 var is_attacking = false
-@onready var progress_bar: ProgressBar = $ProgressBar
+@onready var progress_bar: ProgressBar = $ProgressBarSukuna
 @onready var animacao = $Animacao_Sukuna
+var knockback: Vector2 = Vector2.ZERO
+var knockback_timer: float = 0.0
+
+var DASH_SPEED = 300
+var dashing = false
+var can_dash = true
 
 func _ready():
 	var project_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -33,7 +39,10 @@ func handle_movement():
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
 	if direction != 0:
-		velocity.x = direction * speed
+		if dashing == true:
+			velocity.x = direction * DASH_SPEED
+		else:
+			velocity.x = direction * speed
 		if direction > 0:
 			animacao.flip_h = false
 		else:
@@ -46,6 +55,7 @@ func update_animation():
 		$Animacao_Sukuna.play("attack_sukuna")
 		$AttackArea/AttackColisao.disabled = false
 		is_attacking = true
+		$Hitbox/ColisaoDeCima.disabled = false
 	if Input.is_action_pressed("sukuna_agachar") && is_attacking == false:
 			animacao.play("sukuna_agachando")
 			$Hitbox/ColisaoDeCima.disabled = true
@@ -60,7 +70,12 @@ func update_animation():
 	else:
 		if  is_agachando == false && is_attacking == false:
 			animacao.play("idle")
-
+	if Input.is_action_just_pressed("dash_sukuna_key") && can_dash == true:
+		dashing = true
+		$Animacao_Sukuna.play("dash_sukuna")
+		$Timer_DS_can_dash.start()
+		$Timer_DS.start()
+		can_dash = false
 
 
 func take_damage():
@@ -69,14 +84,13 @@ func take_damage():
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	take_damage()
-	apply_knockback(area.global_position)
-
-func apply_knockback(attacker_position: Vector2):
-	var direction = (global_position - attacker_position).normalized()
-	velocity = direction * 100
 	move_and_slide()
 
 func _on_animacao_sukuna_animation_finished() -> void:
 	if $Animacao_Sukuna.animation == "attack_sukuna":
 		$AttackArea/AttackColisao.disabled = true
 		is_attacking = false
+func _on_timer_timeout() -> void:
+	dashing = false
+func _on_timer_ds_can_dash_timeout() -> void:
+	can_dash = true

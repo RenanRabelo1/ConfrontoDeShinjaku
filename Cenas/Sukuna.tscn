@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://bo1a6isilwsgf"]
+[gd_scene load_steps=30 format=3 uid="uid://bo1a6isilwsgf"]
 
 [ext_resource type="Script" uid="uid://mse0p7v74jny" path="res://Cenas/sukuna.gd" id="1_hust6"]
 [ext_resource type="Texture2D" uid="uid://d3ud3umpwtv46" path="res://Assets Jujutsu Kaisen/Sukuna Walking.png" id="1_kth8y"]
 [ext_resource type="Texture2D" uid="uid://b6hprintau6p6" path="res://Assets Jujutsu Kaisen/Animations/Sukuna/sukuna_attacking.png" id="2_8erxx"]
 [ext_resource type="Texture2D" uid="uid://b7j2tevx6p5t0" path="res://Assets Jujutsu Kaisen/Sukuna Standing.png" id="2_hust6"]
+[ext_resource type="Texture2D" uid="uid://b8tlyui4x84s8" path="res://Assets Jujutsu Kaisen/Animations/Sukuna/Sukuna Dash.png" id="3_sre0w"]
 [ext_resource type="Texture2D" uid="uid://c1rwl2mkop0vw" path="res://Assets Jujutsu Kaisen/Animations/Sukuna/sukuna_agachando.png" id="5_8erxx"]
 [ext_resource type="Texture2D" uid="uid://b8myn3gbklfm7" path="res://Assets Jujutsu Kaisen/Animations/Sukuna/Sukuna Jumping.png" id="7_sre0w"]
 
@@ -22,6 +23,10 @@ region = Rect2(138, 0, 69, 99)
 [sub_resource type="AtlasTexture" id="AtlasTexture_oubr6"]
 atlas = ExtResource("2_8erxx")
 region = Rect2(216, 0, 72, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hw8b"]
+atlas = ExtResource("3_sre0w")
+region = Rect2(70, 0, 70, 95)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kth8y"]
 atlas = ExtResource("2_hust6")
@@ -92,7 +97,30 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_sukuna",
-"speed": 20.0
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hw8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hw8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hw8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hw8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hw8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hw8b")
+}],
+"loop": false,
+"name": &"dash_sukuna",
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -159,7 +187,7 @@ a = Vector2(35, 4)
 b = Vector2(14, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhnam"]
-size = Vector2(25, 26)
+size = Vector2(19, 26)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gntv0"]
 height = 60.0
@@ -173,7 +201,7 @@ script = ExtResource("1_hust6")
 position = Vector2(0.99999994, 5.5000005)
 scale = Vector2(0.9047619, 0.65625)
 sprite_frames = SubResource("SpriteFrames_fa2h3")
-animation = &"attack_sukuna"
+animation = &"dash_sukuna"
 
 [node name="AttackArea" type="Area2D" parent="."]
 
@@ -185,7 +213,7 @@ disabled = true
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="ColisaoDeCima" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -13)
+position = Vector2(1.5, -13)
 shape = SubResource("RectangleShape2D_uhnam")
 
 [node name="colisao_sukuna" type="CollisionShape2D" parent="."]
@@ -197,7 +225,7 @@ position = Vector2(2, 11)
 scale = Vector2(0.95, 1.775)
 rect = Rect2(-10.526317, -21.408451, 20.526318, 31.408451)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBarSukuna" type="ProgressBar" parent="."]
 offset_left = -22.0
 offset_top = -55.0
 offset_right = 23.0
@@ -205,6 +233,13 @@ offset_bottom = -28.0
 max_value = 20.0
 value = 20.0
 
+[node name="Timer_DS" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="Timer_DS_can_dash" type="Timer" parent="."]
+
 [connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
 [connection signal="animation_finished" from="Animacao_Sukuna" to="." method="_on_animacao_sukuna_animation_finished"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="Timer_DS" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer_DS_can_dash" to="." method="_on_timer_ds_can_dash_timeout"]

@@ -8,11 +8,13 @@ var gravity: float = 980.0
 var is_attacking = false
 var is_agachando = false
 
-@onready var progress_bar: ProgressBar = $ProgressBar
+@onready var progress_bar: ProgressBar = $ProgressBarGojo
 @onready var animacao = $Animacao_Gojo
 @onready var timer_attack = $Animacao_Gojo/TimerAttack
 
-
+var dashing = false
+var DASH_SPEED = 300
+var can_dash = true
 func _ready():
 	var project_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 	if project_gravity:
@@ -41,7 +43,10 @@ func handle_movement():
 	var direction = Input.get_axis("left_gojo", "right_gojo")
 	
 	if direction != 0:
-		velocity.x = direction * speed
+		if dashing ==  true:
+			velocity.x = direction * DASH_SPEED
+		else:
+			velocity.x = direction * speed
 		if direction > 0:
 			animacao.flip_h = false
 		else:
@@ -49,16 +54,12 @@ func handle_movement():
 	else:
 		velocity.x = 0
 
-func start_attack():	
-	is_attacking = true
-	$Animacao_Gojo/TimerAttack.start()
-	$Animacao_Gojo/TimerColisaoAttack.start() # Mostra e ativa a área
-
 func update_animation():
 	if Input.is_action_just_pressed("AttackGojoUp"):
 		$Animacao_Gojo.play("Attack_Cima_Gojo")
 		$AttackArea/ColisionShape.disabled = false
 		is_attacking = true
+		$Hitbox/colisao_cima.disabled = false
 	if Input.is_action_pressed("gojo_agachando") && is_attacking == false:
 		$Animacao_Gojo.play("gojo_agachando")
 		is_agachando = true
@@ -74,6 +75,12 @@ func update_animation():
 		else:
 			if is_attacking == false && is_agachando == false:
 				animacao.play("battle_preparation_gojo")
+	if Input.is_action_just_pressed("dash_gojo_key") && can_dash == true:
+		$Animacao_Gojo.play("dash_gojo")
+		dashing = true
+		$Timer_DG.start()
+		$Timer_DG_can_dash.start()
+		can_dash = false
   
 
 
@@ -89,9 +96,8 @@ func take_damage():
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	take_damage()
-	apply_knockback(area.global_position)
-
-func apply_knockback(attacker_position: Vector2):
-	var direction = (global_position - attacker_position).normalized()
-	velocity = direction * 100
 	move_and_slide()
+func _on_timer_dg_timeout() -> void:
+	dashing = false
+func _on_timer_dg_can_dash_timeout() -> void:
+	can_dash = true
