@@ -92,7 +92,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_sukuna",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -156,7 +156,7 @@ animations = [{
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8erxx"]
 a = Vector2(35, 4)
-b = Vector2(16, 4)
+b = Vector2(14, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhnam"]
 size = Vector2(25, 24)
@@ -176,12 +176,12 @@ script = ExtResource("1_hust6")
 position = Vector2(0.99999994, 5.5000005)
 scale = Vector2(0.9047619, 0.65625)
 sprite_frames = SubResource("SpriteFrames_fa2h3")
-animation = &"sukuna_agachando"
+animation = &"attack_sukuna"
 
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="AttackColisao" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(0, -13)
+position = Vector2(-49, -11)
 shape = SubResource("SegmentShape2D_8erxx")
 disabled = true
 
@@ -213,4 +213,5 @@ max_value = 20.0
 value = 20.0
 
 [connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
+[connection signal="animation_finished" from="Animacao_Sukuna" to="." method="_on_animacao_sukuna_animation_finished"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

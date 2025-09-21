@@ -44,10 +44,9 @@ func handle_movement():
 func update_animation():
 	if Input.is_action_just_pressed("AttackSukunaUp"):
 		$Animacao_Sukuna.play("attack_sukuna")
-		$AttackArea/AttackColisao.disabled == false
+		$AttackArea/AttackColisao.disabled = false
 		is_attacking = true
-	if Input.is_action_pressed("sukuna_agachar"):
-		if animacao.animation != "sukuna_agachando" && is_attacking == false:
+	if Input.is_action_pressed("sukuna_agachar") && is_attacking == false:
 			animacao.play("sukuna_agachando")
 			$Hitbox/ColisaoDeCima.disabled = true
 			is_agachando = true
@@ -59,7 +58,8 @@ func update_animation():
 	elif abs(velocity.x) > 0 && is_agachando == false && is_attacking == false:
 		animacao.play("sukuna_andando")
 	else:
-		animacao.play("idle")
+		if  is_agachando == false && is_attacking == false:
+			animacao.play("idle")
 
 
 
@@ -75,7 +75,6 @@ func apply_knockback(attacker_position: Vector2):
 	var direction = (global_position - attacker_position).normalized()
 	velocity = direction * 100
 	move_and_slide()
-
 
 func _on_animacao_sukuna_animation_finished() -> void:
 	if $Animacao_Sukuna.animation == "attack_sukuna":

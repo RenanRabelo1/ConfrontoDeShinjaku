@@ -66,7 +66,7 @@ func update_animation():
 		else:
 			if is_attacking == false:
 				animacao.play("battle_preparation_gojo")
-  # Esconde e desativa a área
+  
 
 
 func _on_animacao_gojo_animation_finished() -> void:
@@ -85,5 +85,5 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 
 func apply_knockback(attacker_position: Vector2):
 	var direction = (global_position - attacker_position).normalized()
-	velocity = direction * 1000
+	velocity = direction * 100
 	move_and_slide()
