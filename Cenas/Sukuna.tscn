@@ -1,16 +1,27 @@
-[gd_scene load_steps=33 format=3 uid="uid://bo1a6isilwsgf"]
+[gd_scene load_steps=32 format=3 uid="uid://bo1a6isilwsgf"]
 
 [ext_resource type="Script" uid="uid://mse0p7v74jny" path="res://Cenas/sukuna.gd" id="1_hust6"]
 [ext_resource type="Texture2D" uid="uid://d3ud3umpwtv46" path="res://Assets Jujutsu Kaisen/Sukuna Walking.png" id="1_kth8y"]
-[ext_resource type="Texture2D" uid="uid://dttd5xft23wpg" path="res://Assets Jujutsu Kaisen/Animations/Sukuna/Sukuna Fire Arrow.png" id="2_8erxx"]
+[ext_resource type="Texture2D" uid="uid://b6hprintau6p6" path="res://Assets Jujutsu Kaisen/Animations/Sukuna/sukuna_attacking.png" id="2_8erxx"]
 [ext_resource type="Texture2D" uid="uid://b7j2tevx6p5t0" path="res://Assets Jujutsu Kaisen/Sukuna Standing.png" id="2_hust6"]
-[ext_resource type="Texture2D" uid="uid://p05womsk41l1" path="res://Assets Jujutsu Kaisen/Animations/Sukuna/Spin Adaptação Sukuna.png" id="2_uhnam"]
 [ext_resource type="Texture2D" uid="uid://c1rwl2mkop0vw" path="res://Assets Jujutsu Kaisen/Animations/Sukuna/sukuna_agachando.png" id="5_8erxx"]
 [ext_resource type="Texture2D" uid="uid://b8myn3gbklfm7" path="res://Assets Jujutsu Kaisen/Animations/Sukuna/Sukuna Jumping.png" id="7_sre0w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6hw8b"]
 atlas = ExtResource("2_8erxx")
-region = Rect2(75, 0, 75, 115)
+region = Rect2(0, 0, 67, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b48hm"]
+atlas = ExtResource("2_8erxx")
+region = Rect2(65, 0, 65, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_advtb"]
+atlas = ExtResource("2_8erxx")
+region = Rect2(136, 0, 68, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eapg1"]
+atlas = ExtResource("2_8erxx")
+region = Rect2(216, 0, 72, 98)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e4dtc"]
 atlas = ExtResource("2_hust6")
@@ -27,18 +38,6 @@ region = Rect2(42, 0, 42, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_oubr6"]
 atlas = ExtResource("2_hust6")
 region = Rect2(0, 0, 42, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lfkwy"]
-atlas = ExtResource("5_8erxx")
-region = Rect2(0, 0, 53, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2bw6t"]
-atlas = ExtResource("5_8erxx")
-region = Rect2(53, 0, 53, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qvbda"]
-atlas = ExtResource("5_8erxx")
-region = Rect2(106, 0, 53, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gntv0"]
 atlas = ExtResource("5_8erxx")
@@ -99,7 +98,13 @@ animations = [{
 "texture": SubResource("AtlasTexture_6hw8b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_uhnam")
+"texture": SubResource("AtlasTexture_b48hm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_advtb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eapg1")
 }],
 "loop": true,
 "name": &"attack_sukuna",
@@ -123,15 +128,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lfkwy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2bw6t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qvbda")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gntv0")
 }],
@@ -204,9 +200,13 @@ script = ExtResource("1_hust6")
 position = Vector2(3, 1.1368684e-13)
 scale = Vector2(0.8428568, 0.64139485)
 sprite_frames = SubResource("SpriteFrames_6hw8b")
-animation = &"attack_sukuna"
+animation = &"sukuna_agachando"
 autoplay = "idle"
 speed_scale = 0.0
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 
 [node name="Hitbox" type="Area2D" parent="."]
 
