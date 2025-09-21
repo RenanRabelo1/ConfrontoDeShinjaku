@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bo1a6isilwsgf"]
+[gd_scene load_steps=29 format=3 uid="uid://bo1a6isilwsgf"]
 
 [ext_resource type="Script" uid="uid://mse0p7v74jny" path="res://Cenas/sukuna.gd" id="1_hust6"]
 [ext_resource type="Texture2D" uid="uid://d3ud3umpwtv46" path="res://Assets Jujutsu Kaisen/Sukuna Walking.png" id="1_kth8y"]
@@ -7,109 +7,76 @@
 [ext_resource type="Texture2D" uid="uid://c1rwl2mkop0vw" path="res://Assets Jujutsu Kaisen/Animations/Sukuna/sukuna_agachando.png" id="5_8erxx"]
 [ext_resource type="Texture2D" uid="uid://b8myn3gbklfm7" path="res://Assets Jujutsu Kaisen/Animations/Sukuna/Sukuna Jumping.png" id="7_sre0w"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6hw8b"]
-atlas = ExtResource("2_8erxx")
-region = Rect2(0, 0, 67, 98)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b48hm"]
-atlas = ExtResource("2_8erxx")
-region = Rect2(65, 0, 65, 98)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_advtb"]
-atlas = ExtResource("2_8erxx")
-region = Rect2(136, 0, 68, 98)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eapg1"]
-atlas = ExtResource("2_8erxx")
-region = Rect2(216, 0, 72, 98)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_e4dtc"]
-atlas = ExtResource("2_hust6")
-region = Rect2(126, 0, 42, 96)
+atlas = ExtResource("2_8erxx")
+region = Rect2(0, 0, 65, 99)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_popr3"]
-atlas = ExtResource("2_hust6")
-region = Rect2(84, 0, 42, 96)
+atlas = ExtResource("2_8erxx")
+region = Rect2(65, 0, 65, 99)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k51cs"]
-atlas = ExtResource("2_hust6")
-region = Rect2(42, 0, 42, 96)
+atlas = ExtResource("2_8erxx")
+region = Rect2(138, 0, 69, 99)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oubr6"]
+atlas = ExtResource("2_8erxx")
+region = Rect2(216, 0, 72, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kth8y"]
 atlas = ExtResource("2_hust6")
 region = Rect2(0, 0, 42, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gntv0"]
-atlas = ExtResource("5_8erxx")
-region = Rect2(159, 0, 53, 96)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hust6"]
+atlas = ExtResource("2_hust6")
+region = Rect2(42, 0, 42, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhnam"]
+atlas = ExtResource("2_hust6")
+region = Rect2(126, 0, 42, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8erxx"]
-atlas = ExtResource("1_kth8y")
-region = Rect2(0, 0, 39, 97)
+atlas = ExtResource("2_hust6")
+region = Rect2(84, 0, 42, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa2h3"]
+atlas = ExtResource("5_8erxx")
+region = Rect2(156, 0, 52, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sre0w"]
 atlas = ExtResource("1_kth8y")
-region = Rect2(43, 0, 43, 97)
+region = Rect2(450, 0, 50, 97)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bu0rx"]
 atlas = ExtResource("1_kth8y")
-region = Rect2(92, 0, 46, 97)
+region = Rect2(400, 0, 50, 97)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ofp5v"]
 atlas = ExtResource("1_kth8y")
-region = Rect2(294, 0, 49, 97)
+region = Rect2(350, 0, 50, 97)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2rtiu"]
 atlas = ExtResource("1_kth8y")
-region = Rect2(245, 0, 49, 97)
+region = Rect2(150, 0, 50, 97)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kfshx"]
 atlas = ExtResource("1_kth8y")
-region = Rect2(196, 0, 49, 97)
+region = Rect2(200, 0, 50, 97)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o36yo"]
 atlas = ExtResource("1_kth8y")
-region = Rect2(147, 0, 49, 97)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fa2h3"]
-atlas = ExtResource("1_kth8y")
-region = Rect2(450, 0, 50, 97)
+region = Rect2(300, 0, 50, 97)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58k4s"]
-atlas = ExtResource("1_kth8y")
-region = Rect2(400, 0, 50, 97)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5kth1"]
-atlas = ExtResource("1_kth8y")
-region = Rect2(350, 0, 50, 97)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cyyub"]
 atlas = ExtResource("7_sre0w")
 region = Rect2(0, 0, 49, 93)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oi1tx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kth1"]
 atlas = ExtResource("7_sre0w")
 region = Rect2(49, 0, 49, 93)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6hw8b"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_fa2h3"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6hw8b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b48hm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_advtb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eapg1")
-}],
-"loop": true,
-"name": &"attack_sukuna",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e4dtc")
@@ -123,22 +90,36 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oubr6")
 }],
-"loop": true,
+"loop": false,
+"name": &"attack_sukuna",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kth8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hust6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhnam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8erxx")
+}],
+"loop": false,
 "name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gntv0")
+"texture": SubResource("AtlasTexture_fa2h3")
 }],
-"loop": false,
+"loop": true,
 "name": &"sukuna_agachando",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8erxx")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sre0w")
 }, {
@@ -156,15 +137,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o36yo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fa2h3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_58k4s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5kth1")
 }],
 "loop": true,
 "name": &"sukuna_andando",
@@ -172,15 +144,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cyyub")
+"texture": SubResource("AtlasTexture_58k4s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oi1tx")
+"texture": SubResource("AtlasTexture_5kth1")
 }],
 "loop": true,
 "name": &"sukuna_jumping",
 "speed": 5.0
 }]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8erxx"]
+a = Vector2(35, 4)
+b = Vector2(16, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhnam"]
 size = Vector2(25, 24)
@@ -197,21 +173,22 @@ collision_mask = 3
 script = ExtResource("1_hust6")
 
 [node name="Animacao_Sukuna" type="AnimatedSprite2D" parent="."]
-position = Vector2(3, 1.1368684e-13)
-scale = Vector2(0.8428568, 0.64139485)
-sprite_frames = SubResource("SpriteFrames_6hw8b")
+position = Vector2(0.99999994, 5.5000005)
+scale = Vector2(0.9047619, 0.65625)
+sprite_frames = SubResource("SpriteFrames_fa2h3")
 animation = &"sukuna_agachando"
-autoplay = "idle"
-speed_scale = 0.0
 
 [node name="AttackArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+[node name="AttackColisao" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, -13)
+shape = SubResource("SegmentShape2D_8erxx")
+disabled = true
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="ColisaoDeCima" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -18)
+position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_uhnam")
 
 [node name="ColisaoDeBaixo" type="CollisionShape2D" parent="Hitbox"]
@@ -236,5 +213,4 @@ max_value = 20.0
 value = 20.0
 
 [connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
-[connection signal="animation_finished" from="Animacao_Sukuna" to="." method="_on_animacao_sukuna_animation_finished"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

@@ -68,12 +68,22 @@ func update_animation():
 				animacao.play("battle_preparation_gojo")
   # Esconde e desativa a área
 
-func take_damage():
-	progress_bar.value -= 1
-	print("Dano tomado! Vida: ", progress_bar.value)
-
 
 func _on_animacao_gojo_animation_finished() -> void:
 	if $Animacao_Gojo.animation == "Attack_Cima_Gojo":
 		$AttackArea/ColisionShape.disabled =  true
 		is_attacking = false
+
+
+func take_damage():
+	progress_bar.value -= 1
+	print("Dano tomado! Vida: ", progress_bar.value)
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	take_damage()
+	apply_knockback(area.global_position)
+
+func apply_knockback(attacker_position: Vector2):
+	var direction = (global_position - attacker_position).normalized()
+	velocity = direction * 1000
+	move_and_slide()
