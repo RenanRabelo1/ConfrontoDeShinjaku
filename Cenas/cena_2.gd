@@ -8,6 +8,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("cutscene_gojo") || Input.is_action_just_pressed("cutscene_sukuna"):
 		progress_bar()
+		
 
 
 func progress_bar():
@@ -16,3 +17,9 @@ func progress_bar():
 	if $Player/ProgressBarGojo.value <= 90.0:
 		pass
 	
+
+
+
+func _on_mahoragaaa_finished() -> void:
+	$sukuna/ProgressBarSukuna.value -= 20
+	get_tree().change_scene_to_file("res://Cenas/cena_3.tscn")

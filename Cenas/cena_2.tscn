@@ -48,3 +48,5 @@ offset_right = 572.0
 offset_bottom = 326.0
 stream = ExtResource("2_jdhi4")
 volume_db = -80.0
+
+[connection signal="finished" from="Mahoragaaa" to="." method="_on_mahoragaaa_finished"]
