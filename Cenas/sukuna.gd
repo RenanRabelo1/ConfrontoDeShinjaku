@@ -7,10 +7,8 @@ var is_agachando = false
 var is_attacking = false
 @onready var progress_bar: ProgressBar = $ProgressBarSukuna
 @onready var animacao = $Animacao_Sukuna
-var knockback: Vector2 = Vector2.ZERO
-var knockback_timer: float = 0.0
 
-var DASH_SPEED = 300
+var DASH_SPEED = 500
 var dashing = false
 var can_dash = true
 
@@ -23,7 +21,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
-	if is_agachando == false && is_attacking == false:
+	if is_agachando == false:
 		handle_movement()
 	
 	update_animation()
@@ -50,10 +48,16 @@ func handle_movement():
 	else:
 		velocity.x = 0
 
+
 func update_animation():
+	var direction = Input.get_axis("ui_left", "ui_right")
+	
 	if Input.is_action_just_pressed("AttackSukunaUp"):
 		$Animacao_Sukuna.play("attack_sukuna")
-		$AttackArea/AttackColisao.disabled = false
+		if direction < 0: 
+			$AttackArea/AttackColisao.disabled = false
+		if direction > 0:
+			$AttackArea/AttackColisao2.disabled = false
 		is_attacking = true
 		$Hitbox/ColisaoDeCima.disabled = false
 	if Input.is_action_pressed("sukuna_agachar") && is_attacking == false:
@@ -81,14 +85,20 @@ func update_animation():
 func take_damage():
 	progress_bar.value -= 1
 	print("Dano tomado! Vida: ", progress_bar.value)
+	
+
+
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	take_damage()
 	move_and_slide()
 
+
+
 func _on_animacao_sukuna_animation_finished() -> void:
 	if $Animacao_Sukuna.animation == "attack_sukuna":
 		$AttackArea/AttackColisao.disabled = true
+		$AttackArea/AttackColisao2.disabled = true
 		is_attacking = false
 func _on_timer_timeout() -> void:
 	dashing = false

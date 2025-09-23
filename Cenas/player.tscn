@@ -186,10 +186,10 @@ radius = 9.0
 height = 48.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_e2nbm"]
-b = Vector2(24, 0)
+b = Vector2(29, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2nbm"]
-size = Vector2(16, 21.5)
+size = Vector2(11, 42)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 7
@@ -204,7 +204,9 @@ wait_time = 0.2
 position = Vector2(6, 18)
 scale = Vector2(0.78724194, 0.6827975)
 sprite_frames = SubResource("SpriteFrames_e2nbm")
-animation = &"dash_gojo"
+animation = &"Attack_Cima_Gojo"
+frame = 3
+frame_progress = 1.0
 script = ExtResource("8_e2nbm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -217,20 +219,24 @@ offset_left = -14.0
 offset_top = -35.0
 offset_right = 27.0
 offset_bottom = -8.0
-max_value = 10.0
-value = 10.0
+value = 100.0
 
 [node name="AttackArea" type="Area2D" parent="."]
 
+[node name="ColisionShape2" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(-35, 10)
+shape = SubResource("SegmentShape2D_e2nbm")
+disabled = true
+
 [node name="ColisionShape" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(17, 8)
+position = Vector2(16, 9)
 shape = SubResource("SegmentShape2D_e2nbm")
 disabled = true
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="colisao_cima" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(5, 9.75)
+position = Vector2(4.5, 20)
 shape = SubResource("RectangleShape2D_e2nbm")
 
 [connection signal="timeout" from="Timer_DG" to="." method="_on_timer_dg_timeout"]

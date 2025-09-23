@@ -1105,9 +1105,9 @@ tile_set = SubResource("TileSet_34m0m")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="ExpansaodeDominio" type="VideoStreamPlayer" parent="."]
-offset_left = -575.0
+offset_left = -576.0
 offset_top = -324.0
-offset_right = 577.0
+offset_right = 576.0
 offset_bottom = 324.0
 stream = ExtResource("1_dfbla")
 autoplay = true

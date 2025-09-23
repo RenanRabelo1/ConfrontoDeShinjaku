@@ -183,11 +183,11 @@ animations = [{
 }]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8erxx"]
-a = Vector2(35, 4)
-b = Vector2(14, 4)
+a = Vector2(33, 4)
+b = Vector2(10, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhnam"]
-size = Vector2(19, 26)
+size = Vector2(9, 51)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gntv0"]
 height = 60.0
@@ -198,10 +198,10 @@ collision_mask = 3
 script = ExtResource("1_hust6")
 
 [node name="Animacao_Sukuna" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.99999994, 5.5000005)
-scale = Vector2(0.9047619, 0.65625)
+position = Vector2(-0.9999999, 7.0000005)
+scale = Vector2(0.78772885, 0.64125633)
 sprite_frames = SubResource("SpriteFrames_fa2h3")
-animation = &"dash_sukuna"
+animation = &"attack_sukuna"
 
 [node name="AttackArea" type="Area2D" parent="."]
 
@@ -210,28 +210,27 @@ position = Vector2(-49, -11)
 shape = SubResource("SegmentShape2D_8erxx")
 disabled = true
 
+[node name="AttackColisao2" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(14, -12)
+shape = SubResource("SegmentShape2D_8erxx")
+disabled = true
+
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="ColisaoDeCima" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(1.5, -13)
+position = Vector2(1.5, -0.5)
 shape = SubResource("RectangleShape2D_uhnam")
 
 [node name="colisao_sukuna" type="CollisionShape2D" parent="."]
 position = Vector2(1, 2)
 shape = SubResource("CapsuleShape2D_gntv0")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(2, 11)
-scale = Vector2(0.95, 1.775)
-rect = Rect2(-10.526317, -21.408451, 20.526318, 31.408451)
-
 [node name="ProgressBarSukuna" type="ProgressBar" parent="."]
 offset_left = -22.0
-offset_top = -55.0
+offset_top = -56.0
 offset_right = 23.0
-offset_bottom = -28.0
-max_value = 20.0
-value = 20.0
+offset_bottom = -29.0
+value = 100.0
 
 [node name="Timer_DS" type="Timer" parent="."]
 wait_time = 0.2

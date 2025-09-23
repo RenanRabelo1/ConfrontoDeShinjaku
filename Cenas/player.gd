@@ -13,7 +13,7 @@ var is_agachando = false
 @onready var timer_attack = $Animacao_Gojo/TimerAttack
 
 var dashing = false
-var DASH_SPEED = 300
+var DASH_SPEED = 500
 var can_dash = true
 func _ready():
 	var project_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -21,9 +21,12 @@ func _ready():
 		gravity = project_gravity
  
 
+
+
+
+
 func _physics_process(delta):
-	
-	
+
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
@@ -55,9 +58,13 @@ func handle_movement():
 		velocity.x = 0
 
 func update_animation():
+	var direction = Input.get_axis("left_gojo", "right_gojo")
 	if Input.is_action_just_pressed("AttackGojoUp"):
 		$Animacao_Gojo.play("Attack_Cima_Gojo")
-		$AttackArea/ColisionShape.disabled = false
+		if direction > 0:
+			$AttackArea/ColisionShape.disabled = false
+		if direction < 0:
+				$AttackArea/ColisionShape2.disabled = false
 		is_attacking = true
 		$Hitbox/colisao_cima.disabled = false
 	if Input.is_action_pressed("gojo_agachando") && is_attacking == false:
@@ -87,6 +94,7 @@ func update_animation():
 func _on_animacao_gojo_animation_finished() -> void:
 	if $Animacao_Gojo.animation == "Attack_Cima_Gojo":
 		$AttackArea/ColisionShape.disabled =  true
+		$AttackArea/ColisionShape2.disabled = true
 		is_attacking = false
 
 
